@@ -8,7 +8,10 @@ services:
     working_dir: /work
     ports:
       - 8080:8080
-    command: mvn clean tomcat7:run
+      - 8000:8000
+    command: >
+      bash -c "export MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n && 
+      mvn clean tomcat7:run"
 
     depends_on:
       - db

@@ -14,7 +14,9 @@ public class HelloWorldController {
 
 	@RequestMapping("/hello")
 	public String showHelloPage() {
-		System.out.println("#############Ja Ja Ja Reload method#############");
+    int myNum = 14000;
+    System.out.println(myNum);
+    System.out.println("#############aps Reload method#############");
 		/**
 		 * Spring will display helloworld.jsp under /WEB-INF/views 
 		 */
