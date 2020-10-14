@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  spring-mvc:
+    image: maven:3.6.3-jdk-11
+    container_name: spring-mvc
+    volumes:
+      - ./bulletinboard:/work
+    working_dir: /work
+    ports:
+      - 8080:8080
+    command: mvn clean tomcat7:run
+
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: spring-mvc-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql:/work
+      - db-data:/var/lib/mysql
+    working_dir: /work
+volumes:
+  db-data:
