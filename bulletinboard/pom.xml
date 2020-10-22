@@ -8,7 +8,10 @@
 	<name>Bulletinboard Spring Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<spring.version>4.0.1.RELEASE</spring.version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>4.2.1.RELEASE</org.springframework-version>
+		<mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+		<org.hibernate-version>4.3.10.Final</org.hibernate-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -17,23 +20,42 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Spring dependencies -->
+    
+		<!-- Spring xml context file support -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
+		<!-- requestMapping, @controller, model view etc. -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- datasource, jdbcTemplate etc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- java mysql connector -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+		</dependency>
+		<!-- support hibernate session factory implementation -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<!-- session factory interface -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate-version}</version>
 		</dependency>
 	</dependencies>
 	<build>

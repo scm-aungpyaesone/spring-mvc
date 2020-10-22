@@ -5,13 +5,14 @@ services:
     container_name: spring-mvc
     volumes:
       - ./bulletinboard:/work
+      - m2:/root/.m2
     working_dir: /work
     ports:
       - 8080:8080
       - 8000:8000
     command: >
       bash -c "export MAVEN_OPTS=-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n && 
-      mvn clean tomcat7:run"
+      mvn tomcat7:run"
 
     depends_on:
       - db
@@ -30,5 +31,18 @@ services:
       - ./mysql:/work
       - db-data:/var/lib/mysql
     working_dir: /work
+
+  phpmyadmin: # This is for mysql GUI view in windows
+    image: phpmyadmin/phpmyadmin
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8183:80
 volumes:
   db-data:
+  m2:
