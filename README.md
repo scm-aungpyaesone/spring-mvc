@@ -1,11 +1,9 @@
 ## Environment Setup
-<hr />
 
 ### Start Docker
 1. ```docker-compose up``` from cmd (Not from Vscode terminal.)
 
 ## Database Setup
-<hr />
 
 ### Database Migration
 
